@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <title>DOKUDOKU</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="static/js/script.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+
+    <div class="doku-head">
+      <span class="doku-headline"></span>
+      <div class="exit window-small">X</div>
+      <div class="exit window-big"></div>
+      <div class="exit window-exit">_</div>
+    </div>
+
+    <div class="doku-pad">
+      <table class="doku-pad-all">
+        <tbody class="doku-body">
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+          <tr class="doku-row">
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+            <td class="doku-nonselect"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="number-pad">
+      <input type="button" value="1" class="number-btn">
+      <input type="button" value="2" class="number-btn">
+      <input type="button" value="3" class="number-btn">
+      <input type="button" value="4" class="number-btn">
+      <input type="button" value="5" class="number-btn">
+      <input type="button" value="6" class="number-btn">
+      <input type="button" value="7" class="number-btn">
+      <input type="button" value="8" class="number-btn">
+      <input type="button" value="9" class="number-btn">
+    </div>
+
+    <div class="top-option">
+      <div class="erase"></div>
+      <div class="timer"></div>
+    </div>
+
+    <div class="taskbar">
+      <button class="taskbar-start"><img src="static/img/Windows_Logo_1995.png" width="16px" height="16px"> Start</button>
+      <button class="level level-easy">Easy</button>
+      <button class="level level-midium">Midium</button>
+      <button class="level level-hard">Hard</button>
+    </div>
+
+  </div>
+</body>
+</html>
