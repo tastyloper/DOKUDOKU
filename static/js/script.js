@@ -142,6 +142,55 @@ function makePuzzle(arr, difficulty) {
   return arr;
 }
 
+// 4. html 뿌려줌
+/**
+ * @param {array} arr -2차원 배열
+ */
+function htmlRendering(tbody, arr) {
+  let html = '';
+  let areaNum = 0;
+  arr.forEach((tr, trIdx) => {
+    html += '<tr class="doku-row">';
+    if (trIdx > 2 && trIdx) areaNum++;
+    tr.forEach((td, tdIdx) => {
+      if (tdIdx > 2) areaNum++;
+      html += `<td data-tr="${trIdx}" data-td="${tdIdx}" data-area="${areaNum}" class="${(td === 0) ? 'docu-value' : ''}">${(td === 0) ? ' ' : td}</td>`;
+    });
+    html += '</tr>';
+  });
+
+  tbody.innerHTML = html;
+}
+
+
+/**
+ * 모든 td에 클래스를 삭제하는 로직
+ * @param {object} tds - 모든 td
+ */
+function otherSelectCancel(tds) {
+  tds.forEach((td) => {
+    td.classList.remove('doku-select');
+    td.classList.remove('same-nums');
+    td.classList.remove('relation-cell');
+  });
+}
+
+/**
+ * 같은 값을 표시, 같은 열,행을 표시
+ * @param {object} tds - 모든 td
+ * @param {object} thisTd - 선택한 td
+ */
+function guide(tds, thisTd) {
+  tds.forEach((td) => {
+    if (td.firstChild.nodeValue !== ' ' && td.firstChild.nodeValue === thisTd.firstChild.nodeValue) {
+      td.classList.add('same-nums');
+    }
+    if (td.getAttribute('data-tr') === thisTd.getAttribute('data-tr') || td.getAttribute('data-td') === thisTd.getAttribute('data-td')) {
+      td.classList.add('relation-cell');
+    }
+  });
+}
+
 
 console.log('기본 스도쿠 배열');
 console.log(defaultSudoku);
@@ -157,4 +206,16 @@ const puzzle = makePuzzle(answerCopy, difficulty);
 console.log('현재 스도쿠 문제 배열');
 console.log(puzzle);
 
+const $tbody = document.querySelector('.doku-body');
+htmlRendering($tbody, puzzle);
+
+
+const $tds = document.querySelectorAll('td');
+$tbody.addEventListener('click', (e) => {
+  if (e.target && e.target.nodeName === 'TD') {
+    otherSelectCancel($tds);
+    e.target.classList.add('doku-select');
+    guide($tds, e.target);
+  }
+});
 
