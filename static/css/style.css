@@ -199,6 +199,10 @@ tr td:nth-child(3n - 2) {
   border: none;
   /* color: red; */
 }
+.same-nums {
+  color: black;
+}
+
 .wrong-value, .conflict {
   color: red;
 }
@@ -232,9 +236,6 @@ tr td:nth-child(3n - 2) {
 }
 .relation-cell {
   background-color: rgb(211, 211, 211);
-}
-.same-nums {
-  color: black;
 }
 .taskbar {
   position: fixed;
