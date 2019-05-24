@@ -1,0 +1,224 @@
+@charset "uft-8";
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url("./normalize.css");
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 기본 스타일 */
+html {
+    font-size: 10px;
+}
+body {
+    font-size: 1.4rem;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
+    color: #181818;
+    background: #0D8584;
+}
+/* 링크 스타일 */
+a {
+  color: inherit;                                             text-decoration: none;
+}
+.wrapper {
+}
+/* 제목 및 윈도우 창 버튼 */
+.doku-head {
+  background: #D5DEF3 linear-gradient(to right, rgba(33,41,89,1) 0%,rgba(33,41,89,1) 11%,rgba(80,114,161,1) 56%,rgba(117,172,219,0.7) 92%,rgba(125,185,232,0) 100%);
+  margin: 10px auto 0 auto;
+  width: 500px;
+  height: 40px;
+  color: #D5DEF3;
+  border: 1.5px solid;
+  border-top-color: #ffffff;
+  border-bottom-color: #7B7B7B;
+  border-left-color: #ffffff;
+}
+.doku-headline {
+  padding: 10px 0 0 10px;
+  font-size: 2rem;
+  display: inline-block;
+}
+.exit {
+  background-color: #C0C0C0;
+  width: 30px;
+  height: 30px;
+  float: right;
+  margin-left: 2px;
+  border: 1.5px solid;
+  border-top-color: #ffffff;
+  border-right-color: #7B7B7B;
+  border-bottom-color: #7B7B7B;
+  border-left-color: #ffffff;
+  color: black;
+  text-align: center;
+  padding-top: 7px;
+}
+
+/* 스도쿠 판 */
+.doku-pad {
+  background: #C0C0C0;
+  width: 500px;
+  height: 540px;
+  margin: 0 auto;
+}
+/* 지우개 및 타이머 */
+/* .top-option {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  float: left;
+} */
+
+.doku-body {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+tr:nth-child(3n - 2) {
+  margin-top: 5px;
+}
+.doku-row {
+  display: flex;
+  text-align: center;
+  margin-left: 7px;
+  /* justify-content: space-evenly; */
+}
+
+td {
+  transition: all 0.2s ease;
+  user-select: none;
+  width: 52px;
+  height: 52px;
+  padding-top: 13px;
+  background-color: #C0C0C0;
+  border: 1.5px solid;
+  border-top-color: #ffffff;
+  border-right-color: #7B7B7B;
+  border-bottom-color: #7B7B7B;
+  border-left-color: #ffffff;
+  font-size: 2.5rem;
+  color:rgb(0, 0, 250);
+}
+tr td:nth-child(3n - 2) {
+  margin-left: 5px;
+}
+.docu-value {
+  cursor: pointer;
+}
+.doku-select {
+  background-color: #7F7F7F;
+  font-size: 2.5rem;
+  color: red;
+}
+
+.number-pad {
+  width: 500px;
+  margin: 3px auto;
+  text-align: center;
+  font-size: 2rem;
+  height: 60px;
+  padding-top: 7px;
+}
+
+.number-btn {
+  width: 55.5px;
+  background-color: #C0C0C0;
+  border: 1.5px solid;
+  border-top-color: #ffffff;
+  border-right-color: #7B7B7B;
+  border-bottom-color: #7B7B7B;
+  border-left-color: #ffffff;
+  color: rgb(75, 128, 45);
+  padding: 10px;
+  float: left;
+}
+
+.taskbar {
+  position: fixed;
+  height: 36px;
+  background-color: #BFBFBF;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.taskbar-start {
+  height: 100%;
+  width: 120px;
+  background-color: #BFBFBF;
+  color: black;
+  border-bottom: 2px solid #7B7B7B;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #7B7B7B;
+  margin-right: 3px;
+}
+.level {
+  height: 100%;
+  width: 100px;
+  background-color: #BFBFBF;
+  border-bottom: 2px solid #7B7B7B;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #7B7B7B;
+  margin-right: 1px;
+}
+.level-easy {
+  color:rgb(0, 0, 250);
+}
+.level-midium {
+  color: rgb(75, 128, 45);
+}
+.level-hard {
+  color: red;
+}
