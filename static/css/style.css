@@ -188,7 +188,7 @@ td {
 tr td:nth-child(3n - 2) {
   margin-left: 5px;
 }
-.docu-value {
+.doku-value {
   cursor: pointer;
   color: rgb(75, 128, 45);
 }
