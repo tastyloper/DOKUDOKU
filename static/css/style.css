@@ -70,6 +70,7 @@ a {
 .doku-head {
   background: #D5DEF3 linear-gradient(to right, rgba(33,41,89,1) 0%,rgba(33,41,89,1) 11%,rgba(80,114,161,1) 56%,rgba(117,172,219,0.7) 92%,rgba(125,185,232,0) 100%);
   margin: 10px auto 0 auto;
+  padding: 0 10px 0 5px;
   width: 500px;
   height: 40px;
   color: #D5DEF3;
@@ -80,11 +81,11 @@ a {
   /* font-size: 2rem; */
 }
 .doku-headline {
+  display: inline-block;
   padding: 10px 0 0 10px;
   font-size: 2rem;
-  display: inline-block;
 }
-.exit, .window-big {
+.exit {
   background-color: #C0C0C0;
   width: 30px;
   height: 30px;
@@ -99,6 +100,15 @@ a {
   text-align: center;
   padding-top: 7px;
 }
+.full-window {
+  width: 15px;
+  height: 15px;
+  border-top: 3px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  margin-left: 7px;
+}
 
 /* 스도쿠 판 */
 .doku-pad {
@@ -109,21 +119,40 @@ a {
   position: relative;
 }
 /* 지우개 및 타이머 */
-/* .top-option {
-  width: 100px;
-  height: 100px;
-  background: yellow;
-}
 .erase {
+  background-color: #C0C0C0;
+  border: 1.5px solid;
+  border-top-color: #ffffff;
+  border-right-color: #7B7B7B;
+  border-bottom-color: #7B7B7B;
+  border-left-color: #ffffff;
+  position: absolute;
+  height: 40px;
+  width: 80px;
+  top: 6px;
+  left: 13px;
 }
 .timer {
-} */
+  background: black;
+  position: absolute;
+  height: 40px;
+  width: 150px;
+  top: 6px;
+  right: 13px;
+}
 .success {
   position: absolute;
   width: 500px;
   height: 100%;
   background: #C0C0C0;
   display: none;
+}
+.congratulations {
+  text-align: center;
+  height: 100%;
+  font-size: 2rem;
+  padding-top: 50%;
+  /* line-height: 100%; */
 }
 
 .doku-body {
@@ -161,6 +190,7 @@ tr td:nth-child(3n - 2) {
 }
 .docu-value {
   cursor: pointer;
+  color: rgb(75, 128, 45);
 }
 .doku-select {
   background-color: #C0C0C0;
@@ -169,7 +199,7 @@ tr td:nth-child(3n - 2) {
   border: none;
   /* color: red; */
 }
-.wrong-value {
+.wrong-value, .conflict {
   color: red;
 }
 
@@ -218,6 +248,7 @@ tr td:nth-child(3n - 2) {
 }
 
 .taskbar-start {
+  position: relative;
   height: 100%;
   width: 120px;
   background-color: #BFBFBF;
@@ -228,6 +259,36 @@ tr td:nth-child(3n - 2) {
   border-right: 2px solid #7B7B7B;
   margin-right: 3px;
 }
+.taskbar-start:hover {
+  border-top: 1.5px solid #808080;
+  border-left: 1.5px solid #808080;
+  border-right: 1.5px solid #FAFAFA;
+  border-bottom: 1.5px solid #FAFAFA;
+}
+.start-option {
+  position: absolute;
+  bottom: 38px;
+  width: 120px;
+  height: 105px;
+  background: #BFBFBF;
+  display: none;
+}
+
+.start-option-detail {
+  border-bottom: 2px solid #7B7B7B;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #7B7B7B;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.start-option-detail:hover {
+  border-top: 1.5px solid #808080;
+  border-left: 1.5px solid #808080;
+  border-right: 1.5px solid #FAFAFA;
+  border-bottom: 1.5px solid #FAFAFA;
+}
 .level {
   height: 100%;
   width: 100px;
@@ -236,7 +297,7 @@ tr td:nth-child(3n - 2) {
   border-left: 2px solid #ffffff;
   border-top: 2px solid #ffffff;
   border-right: 2px solid #7B7B7B;
-  margin-right: 1px;
+  /* margin-right: 1px; */
 }
 .level:hover{
   border-top: 1.5px solid #808080;
