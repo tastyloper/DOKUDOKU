@@ -1,0 +1,23 @@
+{
+  "name": "DOKUDOKU",
+  "version": "1.0.0",
+  "description": "make sudoku game in javascript\r edit README.md\r edit README2.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tastyloper/DOKUDOKU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tastyloper/DOKUDOKU/issues"
+  },
+  "homepage": "https://github.com/tastyloper/DOKUDOKU#readme",
+  "dependencies": {
+    "eslint": "^5.16.0"
+  }
+}
