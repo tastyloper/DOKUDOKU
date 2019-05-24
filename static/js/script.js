@@ -160,7 +160,7 @@ function htmlRendering(tbody, arr) {
     if (trIdx > 2 && trIdx) areaNum++;
     tr.forEach((td, tdIdx) => {
       if (tdIdx > 2) areaNum++;
-      html += `<td data-tr="${trIdx}" data-td="${tdIdx}" data-area="${areaNum}" class="${(td === 0) ? 'docu-value' : ''}">${(td === 0) ? ' ' : td}</td>`;
+      html += `<td data-tr="${trIdx}" data-td="${tdIdx}" data-area="${areaNum}" class="${(td === 0) ? 'doku-value' : ''}">${(td === 0) ? '' : td}</td>`;
     });
     html += '</tr>';
   });
@@ -208,7 +208,7 @@ function otherSelectCancel(tds) {
  */
 function guide(tds, thisTd) {
   tds.forEach((td) => {
-    if (td.firstChild.nodeValue !== ' ' && td.firstChild.nodeValue === thisTd.firstChild.nodeValue) {
+    if (td.firstChild && td.textContent === thisTd.textContent) {
       td.classList.add('same-nums');
     }
     if (td.getAttribute('data-tr') === thisTd.getAttribute('data-tr') || td.getAttribute('data-td') === thisTd.getAttribute('data-td')) {
@@ -217,38 +217,41 @@ function guide(tds, thisTd) {
   });
 }
 
-function conflict(params) {
-  
-}
-
 /**
  * 넘겨받은 숫자를 선택한 곳에 넣어주고 정답을 확인하는 로직
  * @param {array} arr - 정답 배열
  * @param {number} num - 숫자버튼 클릭 한 숫자
  */
 function inputNumber(arr, num) {
-  const $select = document.querySelector('.doku-select');
+  const $select = document.querySelector('.doku-select.doku-value');
   const selectAnswer = arr[$select.getAttribute('data-tr')][$select.getAttribute('data-td')];
   const $dataTrs = document.querySelectorAll(`[data-tr='${$select.getAttribute('data-tr')}']`);
   const $dataTds = document.querySelectorAll(`[data-td='${$select.getAttribute('data-td')}']`);
-  if ($select) $select.innerHTML = num;
-  if (selectAnswer === Number(num) && $select.classList.contains('wrong-value')) {
+  $dataTrs.forEach((elem) => {
+    if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
+  });
+  $dataTds.forEach((elem) => {
+    if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
+  });
+  if ($select) $select.textContent = Number(num);
+  if (selectAnswer == num) {
     $select.classList.remove('wrong-value');
-    $dataTrs.forEach((elem) => {
-      if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
-    });
-    $dataTds.forEach((elem) => {
-      if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
-    });
   } else {
     $select.classList.add('wrong-value');
     $dataTrs.forEach((elem) => {
-      if (elem.firstChild.nodeValue === num) elem.classList.add('conflict');
+      if (elem.textContent === num && !elem.classList.contains('doku-select')) elem.classList.add('conflict');
     });
     $dataTds.forEach((elem) => {
-      if (elem.firstChild.nodeValue === num) elem.classList.add('conflict');
+      if (elem.textContent === num && !elem.classList.contains('doku-select')) elem.classList.add('conflict');
     });
   }
+
+  const $valCells = document.querySelectorAll('.doku-value');
+  let allClear = true;
+  $valCells.forEach((cell) => {
+    if (!cell.textContent || cell.classList.contains('wrong-value')) allClear = false;
+  });
+  console.log(allClear);
 }
 
 
