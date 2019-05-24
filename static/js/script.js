@@ -228,10 +228,10 @@ function inputNumber(arr, num) {
   const $dataTrs = document.querySelectorAll(`[data-tr='${$select.getAttribute('data-tr')}']`);
   const $dataTds = document.querySelectorAll(`[data-td='${$select.getAttribute('data-td')}']`);
   $dataTrs.forEach((elem) => {
-    if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
+    elem.classList.remove('conflict');
   });
   $dataTds.forEach((elem) => {
-    if (elem.classList.contains('conflict')) elem.classList.remove('conflict');
+    elem.classList.remove('conflict');
   });
   if ($select) $select.textContent = Number(num);
   if (selectAnswer == num) {
@@ -246,17 +246,48 @@ function inputNumber(arr, num) {
     });
   }
 
+  const $tds = document.querySelectorAll('td');
+  guide($tds, $select);
+
   const $valCells = document.querySelectorAll('.doku-value');
   let allClear = true;
   $valCells.forEach((cell) => {
     if (!cell.textContent || cell.classList.contains('wrong-value')) allClear = false;
   });
-  console.log(allClear);
+  const $success = document.querySelector('.success');
+  if (allClear) $success.style.display = 'block';
 }
 
 
 
-const answerArr = makePuzzle(copyDefault, $tbody);
+let answerArr = makePuzzle(copyDefault, $tbody);
+// --------------start 선택했을 때 ---------------
+const $startBtn = document.querySelector('.taskbar-start');
+$startBtn.addEventListener('click', () => {
+  answerArr = makePuzzle(copyDefault, $tbody);
+});
+// ---------------------------------------------
+
+// --------------levelEasy 선택했을 때 ---------------
+const $levelEasy = document.querySelector('.level-easy');
+$levelEasy.addEventListener('click', () => {
+  answerArr = makePuzzle(copyDefault, $tbody);
+});
+// ---------------------------------------------
+
+// --------------levelMidium 선택했을 때 ---------------
+const $levelMidium = document.querySelector('.level-midium');
+$levelMidium.addEventListener('click', () => {
+  answerArr = makePuzzle(copyDefault, $tbody, 50);
+});
+// ---------------------------------------------
+
+// --------------levelHard 선택했을 때 ---------------
+const $levelHard = document.querySelector('.level-hard');
+$levelHard.addEventListener('click', () => {
+  answerArr = makePuzzle(copyDefault, $tbody, 60);
+});
+// ---------------------------------------------
 
 // --------------TD을 선택했을 때 ---------------
 const $tds = document.querySelectorAll('td');
@@ -278,4 +309,3 @@ $numberWrap.addEventListener('click', (e) => {
   }
 });
 // ---------------------------------------------
-
