@@ -8,15 +8,19 @@
 <body>
   <div class="wrapper">
 
-    <div class="doku-head">DOKUDOKU
-      <span class="doku-headline"></span>
-      <div class="exit window-small">X</div>
-      <div class="window-big"></div>
-      <div class="exit window-exit">_</div>
+    <div class="doku-head">
+      <span class="doku-headline">DOKUDOKU</span>
+      <div class="exit">X</div>
+      <div class="exit">
+        <div class="full-window"></div>
+      </div>
+      <div class="exit">_</div>
     </div>
 
     <div class="doku-pad">
-      <div class="success"></div>
+      <div class="success">
+        <p class="congratulations">Congratulations!</p>
+      </div>
       <div class="top-option">
         <div class="erase"></div>
         <div class="timer"></div>
@@ -41,6 +45,11 @@
 
     <div class="taskbar">
       <button class="taskbar-start"><img src="static/img/Windows_Logo_1995.png" width="16px" height="16px"> Start</button>
+      <div class="start-option">
+        <p class="start-option-detail">New Game</p>
+        <p class="start-option-detail">Restart</p>
+        <p class="start-option-detail">Cancel</p>
+      </div>
       <button class="level level-easy">Easy</button>
       <button class="level level-midium">Midium</button>
       <button class="level level-hard">Hard</button>
