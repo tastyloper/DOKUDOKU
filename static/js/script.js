@@ -157,9 +157,12 @@ function htmlRendering(tbody, arr) {
   let areaNum = 0;
   arr.forEach((tr, trIdx) => {
     html += '<tr class="doku-row">';
-    if (trIdx > 2 && trIdx) areaNum++;
+    if (trIdx >= 0 && trIdx < 3) areaNum = 0;
+    if (trIdx > 2 && trIdx < 6) areaNum = 3;
+    if (trIdx > 5 && trIdx < 9) areaNum = 6;
     tr.forEach((td, tdIdx) => {
-      if (tdIdx > 2) areaNum++;
+      if (tdIdx === 3 || tdIdx === 6) areaNum += 1;
+      console.log(areaNum);
       html += `<td data-tr="${trIdx}" data-td="${tdIdx}" data-area="${areaNum}" class="${(td === 0) ? 'doku-value' : ''}">${(td === 0) ? '' : td}</td>`;
     });
     html += '</tr>';
@@ -211,7 +214,9 @@ function guide(tds, thisTd) {
     if (td.firstChild && td.textContent === thisTd.textContent) {
       td.classList.add('same-nums');
     }
-    if (td.getAttribute('data-tr') === thisTd.getAttribute('data-tr') || td.getAttribute('data-td') === thisTd.getAttribute('data-td')) {
+    if (td.getAttribute('data-tr') === thisTd.getAttribute('data-tr') ||
+        td.getAttribute('data-td') === thisTd.getAttribute('data-td') ||
+        td.getAttribute('data-area') === thisTd.getAttribute('data-area')) {
       td.classList.add('relation-cell');
     }
   });
