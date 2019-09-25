@@ -162,7 +162,6 @@ function htmlRendering(tbody, arr) {
     if (trIdx > 5 && trIdx < 9) areaNum = 6;
     tr.forEach((td, tdIdx) => {
       if (tdIdx === 3 || tdIdx === 6) areaNum += 1;
-      console.log(areaNum);
       html += `<td data-tr="${trIdx}" data-td="${tdIdx}" data-area="${areaNum}" class="${(td === 0) ? 'doku-value' : ''}">${(td === 0) ? '' : td}</td>`;
     });
     html += '</tr>';
@@ -171,12 +170,28 @@ function htmlRendering(tbody, arr) {
   tbody.innerHTML = html;
 }
 
+const $timer = document.querySelector('.timer');
+let inter;
+let date = new Date(2000, 1, 1, 0, 0, 0, 0);
+let milliseconds = date.getTime();
+
+function start() {
+  inter = setInterval(function () {
+    milliseconds += 10;
+    date.setTime(milliseconds);
+    let milli = ((date.getMilliseconds() + '').substring(0, (date.getMilliseconds() + '').length - 1)).trim();
+    milli = (milli.length === 1) ? '0' + milli : (milli.length === 0) ? '00' : milli;
+    $timer.innerHTML = date.toTimeString().substring(3, 8) + ':' + milli;
+  }, 10);
+};
+
 /**
  * 스도쿠 문제를 만드는 로직
  * @param {object} tbody - tbody 요소
  * @param {number} difficulty - 난이도 : 쉬움 - 40개, 보통 - 50개, 어려움 - 60개
  */
 function makePuzzle(arr, tbody, difficulty = 43) {
+  clearInterval(inter);
   const answer = random(arr); // 현재 스도쿠 문제 정답
   console.log('현재 스도쿠 문제 정답 배열');
   console.log(answer);
@@ -187,6 +202,9 @@ function makePuzzle(arr, tbody, difficulty = 43) {
   console.log(puzzle);
 
   htmlRendering(tbody, puzzle);
+  date = new Date(2000, 1, 1, 0, 0, 0, 0);
+  milliseconds = date.getTime();
+  start();
 
   return answer;
 }
@@ -259,8 +277,15 @@ function inputNumber(arr, num) {
   $valCells.forEach((cell) => {
     if (!cell.textContent || cell.classList.contains('wrong-value')) allClear = false;
   });
+  const $successTime = document.querySelector('.success-time');
   const $success = document.querySelector('.success');
-  if (allClear) $success.style.display = 'block';
+  if (allClear) {
+    let milli = ((date.getMilliseconds() + '').substring(0, (date.getMilliseconds() + '').length - 1)).trim();
+    milli = (milli.length === 1) ? '0' + milli : (milli.length === 0) ? '00' : milli;
+    clearInterval(inter);
+    $successTime.textContent = date.toTimeString().substring(3, 8) + ':' + milli;
+    $success.style.display = 'block';
+  }
 }
 
 
@@ -295,8 +320,8 @@ $levelHard.addEventListener('click', () => {
 // ---------------------------------------------
 
 // --------------TD을 선택했을 때 ---------------
-const $tds = document.querySelectorAll('td');
 $tbody.addEventListener('click', (e) => {
+  const $tds = document.querySelectorAll('td');
   if (e.target && e.target.nodeName === 'TD') {
     otherSelectCancel($tds);
     e.target.classList.add('doku-select');
